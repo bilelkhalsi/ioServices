@@ -1,0 +1,12 @@
+# This is a config file for keycloak helm chart:
+# GitHub repo: https://github.com/codecentric/helm-charts
+# Charts repo: https://codecentric.github.io/helm-charts
+#
+
+extraEnv: |
+  - name: PROXY_ADDRESS_FORWARDING
+    value: "true"
+  - name: KEYCLOAK_USER
+    value: "admin"
+  - name: KEYCLOAK_PASSWORD
+    value: "admin"

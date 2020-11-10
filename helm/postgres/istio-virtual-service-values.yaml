@@ -1,0 +1,18 @@
+# Istio VirtualService spec.
+VirtualService:
+  hosts:
+    - "*"
+  gateways:
+    - istio-system/iozone-gateway
+  tcp:
+    - match:
+        - port: 15021
+      route:
+        - destination:
+            host: postgresql.default.svc.cluster.local
+            port:
+              number: 5432
+# No Istio DestinationRule needed.
+DestinationRule: null
+
+

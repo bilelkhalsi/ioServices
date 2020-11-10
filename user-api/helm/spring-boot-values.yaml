@@ -1,0 +1,13 @@
+replicaCount: 2
+
+image:
+  repository: bilelkhalsi/user-api
+  pullPolicy: IfNotPresent
+  ## Overrides the image tag whose default is the chart appVersion.
+  tag: "0.0.1"
+
+service:
+  name: user-api
+  type: ClusterIP
+  port: 8080
+
