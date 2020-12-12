@@ -1,16 +1,16 @@
-name: UserApi  - Release
+name: UserService  - Release
 on:
   push:
     branches:
       - main
     paths:
-      - user-api/**
+      - user-service/**
 jobs:
   release-user-api:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: user-api
+        working-directory: user-service
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 11

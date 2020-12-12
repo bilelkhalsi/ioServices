@@ -1,14 +1,14 @@
-name: UserApi - Gradle Build
+name: UserService - Gradle Build
 
 on:
   push:
     paths:
-      - user-api/**
+      - user-service/**
     branches:
       - main
   pull_request:
     paths:
-      - user-api/**
+      - user-service/**
     branches:
       - main
 jobs:
@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: user-api
+        working-directory: user-service
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 11
