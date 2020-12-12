@@ -1,0 +1,49 @@
+plugins {
+    id "java"
+    id "java-library"
+    id 'org.springframework.boot' version '2.3.4.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+}
+
+group = 'io.services'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+
+java {
+    registerFeature('reactive') {
+        usingSourceSet(sourceSets.main)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    annotationProcessor "org.springframework.boot:spring-boot-autoconfigure-processor"
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
+
+    reactiveImplementation 'org.springframework.boot:spring-boot-starter-security'
+    reactiveImplementation 'org.springframework.security:spring-security-oauth2-resource-server'
+    reactiveImplementation 'org.springframework.security:spring-security-oauth2-jose'
+    reactiveImplementation 'io.projectreactor:reactor-core'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation 'org.springframework.security:spring-security-test'
+
+}
+
+test {
+    useJUnitPlatform()
+}

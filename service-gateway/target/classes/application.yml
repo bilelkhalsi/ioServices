@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: users
+          uri: http://localhost:9004
+          predicates:
+            - Path=/users/**
+          filters:
+            - RewritePath=/users(?<segment>/?.*), $\{segment}
+        - id: courses
+          uri: http://localhost:9004
+          predicates:
+            - Path=/courses/**
+          filters:
+            - RewritePath=/courses(?<segment>/?.*), $\{segment}
+
+springdoc:
+  api-docs:
+    groups:
+      enabled: true
+  swagger-ui:
+    path: /swagger-ui.html
+    display-request-duration: true
+    disable-swagger-default-url: true
+    operationsSorter: method
+    groups-order: DESC
+    urls:
+      - name: users
+        url: /users/v3/api-docs/
+      - name: courses
+        url: /courses/v3/api-docs/
+  show-actuator: false
+  group-configs:
+    - group: courses
+      paths-to-match: /courses/**
+    - group: users
+      paths-to-match: /users/**

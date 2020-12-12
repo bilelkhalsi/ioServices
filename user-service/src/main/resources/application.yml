@@ -1,0 +1,37 @@
+server:
+  port: 9004
+  http2:
+    enabled: true
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+    min-response-size: 1024
+  forward-headers-strategy: framework
+
+spring:
+
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/iozone
+    username: postgres
+    password: postgres
+
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:31380/auth/realms/iozone
+          jwk-set-uri: http://localhost:31380/auth/realms/iozone/protocol/openid-connect/certs
+
+
+management:
+  endpoint:
+    metrics:
+      enabled: true
+
+logging:
+  level:
+    root: ERROR

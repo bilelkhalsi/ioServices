@@ -1,6 +1,0 @@
-spring:
-  liquibase:
-    change-log: classpath:/db/changelog/changelog-master.xml
-    url: jdbc:h2:mem:iozone;DB_CLOSE_DELAY=-1;INIT=CREATE SCHEMA IF NOT EXISTS IOZONE
-    user: iozone
-    password: iozone
