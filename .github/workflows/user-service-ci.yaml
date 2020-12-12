@@ -1,4 +1,4 @@
-name: UserService - Gradle Build
+name: UserService - Maven Build
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 11
-    - name: Build with Gradle
-      run: ./gradlew build
+    - name: Build with Maven
+      run: mvnw clean install
     - name: Build Docker image
-      run: ./gradlew jibDockerBuild
+      run: mvn jib:dockerBuild
