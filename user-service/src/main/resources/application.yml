@@ -12,8 +12,8 @@ spring:
 
   r2dbc:
     url: r2dbc:postgresql://localhost:5432/iozone
-    username: postgres
-    password: postgres
+    username: iozone
+    password: iozone
 
   jackson:
     serialization:
@@ -32,6 +32,18 @@ management:
     metrics:
       enabled: true
 
+springdoc:
+  oauth-flow:
+    authorization-url: http://localhost:31380/auth/realms/iozone/protocol/openid-connect/auth
+    token-url: http://localhost:31380/auth/realms/iozone/protocol/openid-connect/token
+    scopes:
+      openid: openid scope
+      profile: user profile scope
+      email: user email scope
+      iozone.user.write: User update & creation scope
+      iozone.user.read: User info read scope
+      iozone.user.mgnt: User management (read + write) scope
+
 logging:
   level:
-    root: ERROR
+    root: INFO

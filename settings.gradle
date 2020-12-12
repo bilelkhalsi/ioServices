@@ -1,5 +1,0 @@
-rootProject.name = 'ioServices'
-include 'service-db-migration'
-include 'service-oidc-autoconfigure'
-include 'service-gateway'
-include 'user-service'

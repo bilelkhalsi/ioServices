@@ -13,6 +13,12 @@
     <name>service-gateway</name>
     <description>Spring cloud gateway for other services in the mesh</description>
 
+    <properties>
+        <jib.version>2.5.2</jib.version>
+        <springdoc.version>1.5.0</springdoc.version>
+    </properties>
+
+
     <dependencies>
 
         <dependency>
@@ -23,10 +29,24 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-webflux-ui</artifactId>
-            <version>1.5.0</version>
+            <version>${springdoc.version}</version>
         </dependency>
 
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>${jib.version}</version>
+            </plugin>
+        </plugins>
+    </build>
 
 
 </project>

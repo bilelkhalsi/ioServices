@@ -3,7 +3,7 @@ package io.services.user.configuration.openapi;
 import io.swagger.v3.oas.models.security.Scopes;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-// @ConfigurationProperties(prefix = "springdoc.oauth-flow")
+@ConfigurationProperties(prefix = "springdoc.oauth-flow")
 public class OAuthFlowProperties {
 
     String authorizationUrl;

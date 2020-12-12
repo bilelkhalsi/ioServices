@@ -9,11 +9,15 @@ import io.swagger.v3.oas.models.security.OAuthFlow;
 import io.swagger.v3.oas.models.security.OAuthFlows;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-// @Configuration
+@Configuration
+@EnableConfigurationProperties(OAuthFlowProperties.class)
 public class OpenApiConfiguration {
 
+    @Bean
     public OpenAPI openAPI(OAuthFlowProperties properties) {
 
         OAuthFlow oAuthFlow = new OAuthFlow();

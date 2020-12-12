@@ -1,8 +1,10 @@
 package io.services.autoconfigure;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ImmutableUserDetailsImpl implements ImmutableUserDetails {
 
@@ -17,7 +19,7 @@ public class ImmutableUserDetailsImpl implements ImmutableUserDetails {
     private final String firstName;
     private final String lastName;
     private final String locale;
-    private final List<GrantedAuthority> authorities;
+    private final List<? extends GrantedAuthority> authorities;
 
     private ImmutableUserDetailsImpl(
             String id,
@@ -43,7 +45,10 @@ public class ImmutableUserDetailsImpl implements ImmutableUserDetails {
         this.firstName = firstName;
         this.lastName = lastName;
         this.locale = locale;
-        this.authorities = List.copyOf(authorities);
+        this.authorities = Optional.ofNullable(authorities)
+                .map(auths -> auths.stream().map(auth -> new SimpleGrantedAuthority(auth.getAuthority())))
+                .map(auths -> auths.collect(Collectors.toList()))
+                .orElse(Collections.emptyList());
     }
 
     @Override
@@ -72,7 +77,7 @@ public class ImmutableUserDetailsImpl implements ImmutableUserDetails {
     }
 
     @Override
-    public Collection<GrantedAuthority> getAuthorities() {
+    public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
     }
 

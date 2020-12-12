@@ -6,6 +6,8 @@ services:
     image: bitnami/postgresql
     container_name: io_postgres
     restart: always
+    volumes:
+    - ./init:/docker-entrypoint-initdb.d
     environment:
       POSTGRES_PASSWORD: postgres
     ports:
