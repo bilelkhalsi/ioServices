@@ -1,10 +1,7 @@
 name: UserService  - Release
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - user-service/**
+  release:
+    types: [published]
 jobs:
   release-user-api:
     runs-on: ubuntu-latest
