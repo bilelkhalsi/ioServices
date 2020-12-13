@@ -15,6 +15,7 @@ jobs:
 
   test-db-migration:
     runs-on: ubuntu-latest
+    container: ubuntu:latest
     defaults:
       run:
         working-directory: service-db-migration
