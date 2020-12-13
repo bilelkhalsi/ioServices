@@ -38,18 +38,15 @@
                     <plugin>
                         <groupId>org.liquibase</groupId>
                         <artifactId>liquibase-maven-plugin</artifactId>
-                        <configuration>
-                            <changeLogFile>src/main/resources/liquibase/changelog-master.xml</changeLogFile>
-                            <url>jdbc:postgresql://localhost:5432/iozone</url>
-                            <username>iozone</username>
-                            <password>iozone</password>
-                        </configuration>
                         <executions>
                             <execution>
                                 <phase>process-resources</phase>
                                 <goals>
                                     <goal>update</goal>
                                 </goals>
+                                <configuration>
+                                    <propertyFile>src/main/resources/liquibase.local.properties</propertyFile>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
@@ -70,6 +67,9 @@
                                 <goals>
                                     <goal>update</goal>
                                 </goals>
+                                <configuration>
+                                    <propertyFile>src/main/resources/liquibase.test.properties</propertyFile>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
