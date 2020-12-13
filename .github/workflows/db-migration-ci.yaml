@@ -1,0 +1,44 @@
+name: ServiceDbMigration - Test
+on:
+
+  push:
+    paths:
+      - service-db-migration/**
+    branches:
+      - main
+  pull_request:
+    paths:
+      - service-db-migration/**
+    branches:
+      - main
+jobs:
+
+  test-db-migration:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: service-db-migration
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v2
+      - uses: liquibase/liquibase-github-action@v1
+        with:
+          operation: 'update'
+          classpath: 'src/main/resources/liquibase'
+          changeLogFile: 'changelog-master.xml'
+          username: postgres
+          password: postgres
+          url: jdbc:postgresql://postgres:5432/postgres
