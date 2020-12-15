@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.services</groupId>
     <artifactId>services</artifactId>
-    <version>0.0.4-SNAPSHOT</version>
+    <version>0.0.4</version>
     <packaging>pom</packaging>
     <properties>
         <java.version>8</java.version>
@@ -24,7 +24,7 @@
 
     <scm>
         <developerConnection>smc:git:https://github.com/bilelkhalsi/ioServices.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>v0.0.4</tag>
     </scm>
 
     <distributionManagement>
