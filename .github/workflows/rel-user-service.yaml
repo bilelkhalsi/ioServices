@@ -1,7 +1,7 @@
 name: Build user-service release docker image
 on:
   release:
-    types: [created]
+    types: [published]
 jobs:
   release-user-api:
     runs-on: ubuntu-latest
