@@ -4,10 +4,10 @@
     <parent>
         <groupId>io.services</groupId>
         <artifactId>services</artifactId>
-        <version>0.0.5-SNAPSHOT</version>
+        <version>0.0.5</version>
     </parent>
     <artifactId>service-db-migration</artifactId>
-    <version>0.0.5-SNAPSHOT</version>
+    <version>0.0.5</version>
     <packaging>jar</packaging>
     <name>service-db-migration</name>
     <build>
