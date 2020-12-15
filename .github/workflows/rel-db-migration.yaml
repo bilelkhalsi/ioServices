@@ -1,7 +1,7 @@
-name: ServiceDbMigration - Release
+name: Build db-migration release docker image
 on:
   release:
-    types: [published]
+    types: [created]
 jobs:
   release-user-api:
     runs-on: ubuntu-latest
@@ -33,6 +33,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
+            ioServices/service-db-migration:${{ github.event.release.tag_name }}
             ioServices/service-db-migration:latest
             ghcr.io/bilelkhalsi/ioServices/service-db-migration:latest
 
