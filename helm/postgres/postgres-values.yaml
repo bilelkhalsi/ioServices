@@ -1,0 +1,9 @@
+# This is a config file for postgres helm chart:
+# GitHub repo: https://github.com/bitnami/charts
+# Charts repo: https://charts.bitnami.com/bitnami
+#
+global:
+  postgresql:
+    postgresqlDatabase: iozone
+    postgresqlUsername: iozone
+    postgresqlPassword: iozone

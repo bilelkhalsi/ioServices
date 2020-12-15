@@ -1,0 +1,27 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  - role: control-plane
+    kubeadmConfigPatches:
+      - |
+        apiVersion: kubeadm.k8s.io/v1beta2
+        kind: InitConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            node-labels: "ingress-ready=true"
+            authorization-mode: "AlwaysAllow"
+    extraPortMappings:
+      - containerPort: 31370
+        hostPort: 31370
+        listenAddress: "127.0.0.1"
+        protocol: TCP
+      - containerPort: 31380
+        hostPort: 31380
+        listenAddress: "127.0.0.1"
+        protocol: TCP
+      - containerPort: 31390
+        hostPort: 31390
+        listenAddress: "127.0.0.1"
+        protocol: TCP
+  - role: worker
+  - role: worker

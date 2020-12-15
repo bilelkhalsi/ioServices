@@ -1,0 +1,19 @@
+# Istio VirtualService spec.
+VirtualService:
+  hosts:
+    - "*"
+  gateways:
+    - istio-system/iozone-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /auth
+      route:
+        - destination:
+            host: keycloak-http.default.svc.cluster.local
+            port:
+              number: 80
+# No Istio DestinationRule needed.
+DestinationRule: null
+
+

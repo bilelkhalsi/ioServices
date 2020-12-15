@@ -1,0 +1,49 @@
+server:
+  port: 9004
+  http2:
+    enabled: true
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+    min-response-size: 1024
+  forward-headers-strategy: framework
+
+spring:
+
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/iozone
+    username: iozone
+    password: iozone
+
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:31380/auth/realms/iozone
+          jwk-set-uri: http://localhost:31380/auth/realms/iozone/protocol/openid-connect/certs
+
+
+management:
+  endpoint:
+    metrics:
+      enabled: true
+
+springdoc:
+  oauth-flow:
+    authorization-url: http://localhost:31380/auth/realms/iozone/protocol/openid-connect/auth
+    token-url: http://localhost:31380/auth/realms/iozone/protocol/openid-connect/token
+    scopes:
+      openid: openid scope
+      profile: user profile scope
+      email: user email scope
+      iozone.user.write: User update & creation scope
+      iozone.user.read: User info read scope
+      iozone.user.mgnt: User management (read + write) scope
+
+logging:
+  level:
+    root: INFO
