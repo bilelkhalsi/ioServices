@@ -36,10 +36,13 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+          server-id: github
 
       - name: Test Liquibase migration
         run: mvn -pl service-db-migration clean install -P test --no-transfer-progress
 
       - name: Build with Maven
         run: mvn clean install -P test --no-transfer-progress
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

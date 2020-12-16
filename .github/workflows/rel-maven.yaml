@@ -20,6 +20,6 @@ jobs:
           git config user.name "GitHub Actions"
 
       - name: Maven release
-        run: mvn -B release:prepare release:perform
+        run: mvn -B clean release:prepare release:perform --no-transfer-progress
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
