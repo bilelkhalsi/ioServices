@@ -117,7 +117,7 @@
                 <version>${jib.version}</version>
                 <configuration>
                     <to>
-                        <image>ghcr.io/bilelkhalsi/ioServices/user-service</image>
+                        <image>ghcr.io/bilelkhalsi/ioservices/user-service</image>
                         <tags>
                             <tag>latest</tag>
                             <tag>${project.version}</tag>
