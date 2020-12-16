@@ -15,14 +15,11 @@ jobs:
           server-id: github
 
       - name: Configure Git user
-        env:
-          GIT_EMAIL: ${{ secrets.GH_ACTION_EMAIL }}
-          GIT_NAME: ${{ secrets.GH_ACTION_NAME }}
         run: |
-          git config user.email "${GIT_EMAIL}"
-          git config user.name "${GIT_NAME}"
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"
 
       - name: Maven release
         run: mvn -B clean release:prepare release:perform --no-transfer-progress
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_ACTION_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

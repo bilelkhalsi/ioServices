@@ -1,5 +1,6 @@
 name: Build db-migration release docker image
 on:
+  workflow_dispatch:
   release:
     types: [published]
 jobs:
@@ -33,7 +34,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ioServices/service-db-migration:${{ github.event.release.tag_name }}
-            ioServices/service-db-migration:latest
-            ghcr.io/bilelkhalsi/ioServices/service-db-migration:latest
+            ioservices/service-db-migration:${{ github.event.release.tag_name }}
+            ioservices/service-db-migration:latest
+            ghcr.io/bilelkhalsi/ioservices/service-db-migration:latest
 
