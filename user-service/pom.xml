@@ -118,6 +118,10 @@
                 <configuration>
                     <to>
                         <image>ghcr.io/bilelkhalsi/ioservices/user-service</image>
+                        <auth>
+                            <username>${env.GHCR_USERNAME}</username>
+                            <password>${env.GHCR_PASSWORD}</password>
+                        </auth>
                         <tags>
                             <tag>latest</tag>
                             <tag>${project.version}</tag>
