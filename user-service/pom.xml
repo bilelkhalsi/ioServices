@@ -4,11 +4,11 @@
     <parent>
         <groupId>io.services</groupId>
         <artifactId>services</artifactId>
-        <version>0.0.9</version>
+        <version>0.0.10-SNAPSHOT</version>
     </parent>
 
     <artifactId>user-service</artifactId>
-    <version>0.0.9</version>
+    <version>0.0.10-SNAPSHOT</version>
     <name>user-service</name>
     <description>User spring boot Api</description>
 
