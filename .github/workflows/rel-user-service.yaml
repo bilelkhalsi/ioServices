@@ -1,5 +1,6 @@
 name: Build user-service release docker image
 on:
+  workflow_dispatch:
   release:
     types: [published]
 jobs:
@@ -16,9 +17,9 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
-
-      - name: Build with Maven
-        run: mvn clean install --no-transfer-progress
+          server-id: github
 
       - name: Build Docker image
         run: mvn compile jib:build --no-transfer-progress
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
