@@ -14,12 +14,7 @@ jobs:
           java-version: 11
           server-id: github
 
-      - name: Configure Git user
-        run: |
-          git config user.email "actions@github.com"
-          git config user.name "GitHub Actions"
-
       - name: Maven release
         run: mvn -B clean release:prepare release:perform --no-transfer-progress
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_ACTION_PAT }}
