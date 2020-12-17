@@ -23,5 +23,5 @@ jobs:
         run: mvn compile jib:build --no-transfer-progress
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GHCR_USERNAME: ${{ github.actor }}
-          GHCR_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+          GHCR_USERNAME: ${{ github.repository_owner }}
+          GHCR_PASSWORD: ${{ secrets.CR_PAT }}
