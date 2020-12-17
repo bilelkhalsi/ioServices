@@ -4,7 +4,7 @@ on:
   release:
     types: [published]
 jobs:
-  release-user-api:
+  release-db-migration:
     runs-on: ubuntu-latest
     steps:
 
@@ -32,8 +32,6 @@ jobs:
           file: ./service-db-migration/Dockerfile
           push: true
           tags: |
-            bilelkhalsi/ioservices/service-db-migration:${{ github.event.release.tag_name }}
-            bilelkhalsi/ioservices/service-db-migration:latest
             ghcr.io/bilelkhalsi/ioservices/service-db-migration:${{ github.event.release.tag_name }}
             ghcr.io/bilelkhalsi/ioservices/service-db-migration:latest
 
