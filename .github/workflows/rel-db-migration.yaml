@@ -7,6 +7,7 @@ jobs:
   release-user-api:
     runs-on: ubuntu-latest
     steps:
+
       - name: Checkout
         uses: actions/checkout@v2
 
@@ -31,7 +32,8 @@ jobs:
           file: ./service-db-migration/Dockerfile
           push: true
           tags: |
-            ioservices/service-db-migration:${{ github.event.release.tag_name }}
-            ioservices/service-db-migration:latest
+            bilelkhalsi/ioservices/service-db-migration:${{ github.event.release.tag_name }}
+            bilelkhalsi/ioservices/service-db-migration:latest
+            ghcr.io/bilelkhalsi/ioservices/service-db-migration:${{ github.event.release.tag_name }}
             ghcr.io/bilelkhalsi/ioservices/service-db-migration:latest
 
