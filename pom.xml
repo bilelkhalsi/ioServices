@@ -18,6 +18,7 @@
     <modules>
         <module>service-db-migration</module>
         <module>service-oidc-autoconfigure</module>
+        <module>service-config-server</module>
         <module>service-gateway</module>
         <module>user-service</module>
     </modules>

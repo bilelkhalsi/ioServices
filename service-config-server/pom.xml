@@ -1,36 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>io.services</groupId>
         <artifactId>services</artifactId>
+        <groupId>io.services</groupId>
         <version>0.0.14-SNAPSHOT</version>
     </parent>
-    <artifactId>service-gateway</artifactId>
-    <version>0.0.14-SNAPSHOT</version>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>service-config-server</artifactId>
     <packaging>jar</packaging>
-    <name>service-gateway</name>
-    <description>Spring cloud gateway for other services in the mesh</description>
+    <name>service configuration server</name>
+    <description>Spring cloud externalized configuration server</description>
 
     <properties>
         <jib.version>2.5.2</jib.version>
-        <springdoc.version>1.5.0</springdoc.version>
     </properties>
 
-
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway</artifactId>
+            <artifactId>spring-cloud-config-server</artifactId>
         </dependency>
-
         <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-webflux-ui</artifactId>
-            <version>${springdoc.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -45,7 +41,7 @@
                 <version>${jib.version}</version>
                 <configuration>
                     <to>
-                        <image>ghcr.io/bilelkhalsi/ioservices/service-gateway</image>
+                        <image>ghcr.io/bilelkhalsi/ioservices/service-config-server</image>
                         <auth>
                             <username>${env.GHCR_USERNAME}</username>
                             <password>${env.GHCR_PASSWORD}</password>
