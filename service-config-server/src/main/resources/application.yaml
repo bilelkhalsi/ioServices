@@ -6,4 +6,6 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/bilelkhalsi/io-services-config
+          defaultLabel: main
+          refreshRate: 60
+          uri: file:///${user.home}/workspace/github/io-services-config
