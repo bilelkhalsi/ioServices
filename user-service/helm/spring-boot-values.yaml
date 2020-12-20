@@ -1,5 +1,5 @@
 replicaCount: 2
-
+## TODO : add  SPRING_CLOUD_CONFIG_URI as env variable
 image:
   repository: bilelkhalsi/user-api
   pullPolicy: IfNotPresent
