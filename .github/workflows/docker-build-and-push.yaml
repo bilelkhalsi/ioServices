@@ -1,12 +1,18 @@
-name: Build user-service release docker image
+name: Build docker images
 on:
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'branch, tag or sha to run job on'
+        required: true
+        default: ''
   release:
-    types: [published]
+    types: [ published ]
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   GHCR_USERNAME: ${{ github.repository_owner }}
   GHCR_PASSWORD: ${{ secrets.CR_PAT }}
+  GH_REPO_URL: ${{ github.event.repository.html_url }}
 jobs:
 
   release-config-server:
@@ -60,9 +66,36 @@ jobs:
     needs: [ release-service-gateway ]
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        if: ${{ contains(github.event_name, 'release') }}
+        uses: actions/checkout@v2
 
       - name: Checkout
+        if: ${{ contains(github.event_name, 'workflow_dispatch') }}
         uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.inputs.tag }}
+
+      - name: docker image tags
+        id: tags
+        run: |
+          IMAGE=ghcr.io/bilelkhalsi/ioservices/service-db-migration
+          REF=${{ github.sha }}
+          TAGS="${IMAGE}:${REF}"
+          if [ $GITHUB_EVENT_NAME == 'release' ]
+          then
+            REF=${{ github.event.release.tag_name }}
+            TAGS="${TAGS},${IMAGE}:${REF},${IMAGE}:latest"
+            echo "Release event : ${REF}"
+          elif [ $GITHUB_EVENT_NAME == 'workflow_dispatch' ]
+          then
+            REF=${{ github.event.inputs.tag }}
+            TAGS="${TAGS},${IMAGE}:${REF}"
+            echo "Manually running on tag : ${REF}"
+          fi
+          echo ::set-output name=tags::${TAGS}
+          echo ::set-output name=version::${REF}
+          echo ::set-output name=date::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -84,6 +117,10 @@ jobs:
           context: ./service-db-migration
           file: ./service-db-migration/Dockerfile
           push: true
-          tags: |
-            ghcr.io/bilelkhalsi/ioservices/service-db-migration:${{ github.event.release.tag_name }}
-            ghcr.io/bilelkhalsi/ioservices/service-db-migration:latest
+          tags: ${{steps.tags.outputs.tags}}
+          labels: |
+            org.opencontainers.image.created=${{ steps.tags.outputs.date }}
+            org.opencontainers.image.source=${{ github.event.repository.html_url }}
+            org.opencontainers.image.version=${{ steps.tags.outputs.version }}
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.licenses=${{ github.event.repository.license.spdx_id }}

@@ -8,11 +8,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Api {
+public class UserService {
 
     public static void main(String[] args) {
         // Hooks.onOperatorDebug();
-        SpringApplication.run(Api.class, args);
+        SpringApplication.run(UserService.class, args);
     }
 
 }
