@@ -11,10 +11,6 @@
     <name>service configuration server</name>
     <description>Spring cloud externalized configuration server</description>
 
-    <properties>
-        <jib.version>2.5.2</jib.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>

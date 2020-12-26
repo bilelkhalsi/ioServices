@@ -12,11 +12,6 @@
     <name>backlog-service</name>
     <description>Backlog spring boot Api</description>
 
-    <properties>
-        <jib.version>2.5.2</jib.version>
-        <springdoc.version>1.4.8</springdoc.version>
-    </properties>
-
     <dependencies>
 
         <dependency>
