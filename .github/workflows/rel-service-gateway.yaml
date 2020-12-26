@@ -1,0 +1,29 @@
+name: Build user-service release docker image
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+jobs:
+  release-user-api:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: service-gateway
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+          server-id: github
+
+      - name: Build Docker image
+        run: mvn compile jib:build --no-transfer-progress
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CR_URL: ghcr.io/bilelkhalsi/ioservices
+          CR_USERNAME: ${{ github.repository_owner }}
+          CR_PASSWORD: ${{ secrets.CR_PAT }}
+          GIT_REPO_URL: ${{ github.event.repository.html_url }}
