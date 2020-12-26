@@ -15,18 +15,15 @@
         <spring-boot.version>2.3.7.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
         <spring.profiles.active>test</spring.profiles.active>
-
-        <gh.cr>ghcr.io</gh.cr>
-        <gh.url>https://github.com</gh.url>
-        <gh.repo>ioservices</gh.repo>
         <!--suppress UnresolvedMavenProperty -->
-        <gh.user>${env.GHCR_USERNAME}</gh.user>
+        <cr.url>${env.CR_URL}</cr.url>
         <!--suppress UnresolvedMavenProperty -->
-        <gh.pat>${env.GHCR_PASSWORD}</gh.pat>
+        <cr.username>${env.CR_USERNAME}</cr.username>
         <!--suppress UnresolvedMavenProperty -->
-        <git.repo.url>${env.GH_REPO_URL}</git.repo.url>
-        <git.repo.license>MIT</git.repo.license>
-
+        <cr.password>${env.CR_PASSWORD}</cr.password>
+        <!--suppress UnresolvedMavenProperty -->
+        <git.source.url>${env.GIT_REPO_URL}</git.source.url>
+        <git.source.license>MIT</git.source.license>
     </properties>
 
     <modules>
