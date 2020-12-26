@@ -50,16 +50,26 @@
                 <version>${jib.version}</version>
                 <configuration>
                     <to>
-                        <image>ghcr.io/bilelkhalsi/ioservices/service-gateway</image>
+                        <image>${gh.cr}/${gh.user}/${gh.repo}/${project.artifactId}</image>
                         <auth>
-                            <username>${env.GHCR_USERNAME}</username>
-                            <password>${env.GHCR_PASSWORD}</password>
+                            <username>${gh.user}</username>
+                            <password>${gh.pat}</password>
                         </auth>
                         <tags>
                             <tag>latest</tag>
                             <tag>${project.version}</tag>
                         </tags>
                     </to>
+                    <container>
+                        <labels>
+                            <org.opencontainers.image.created>${git.build.time}</org.opencontainers.image.created>
+                            <org.opencontainers.image.authors>${git.build.user.email}</org.opencontainers.image.authors>
+                            <org.opencontainers.image.source>${git.repo.url}</org.opencontainers.image.source>
+                            <org.opencontainers.image.version>${project.version}</org.opencontainers.image.version>
+                            <org.opencontainers.image.revision>${git.commit.id}</org.opencontainers.image.revision>
+                            <org.opencontainers.image.licenses>${git.repo.license}</org.opencontainers.image.licenses>
+                        </labels>
+                    </container>
                 </configuration>
             </plugin>
         </plugins>
