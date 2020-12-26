@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: backlog
+  cloud:
+    config:
+      uri: http://localhost:8888

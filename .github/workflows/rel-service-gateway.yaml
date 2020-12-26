@@ -1,10 +1,10 @@
-name: Build user-service release docker image
+name: Publish service-gateway docker image
 on:
   workflow_dispatch:
   release:
     types: [published]
 jobs:
-  release-user-api:
+  publish-service-gateway-image:
     runs-on: ubuntu-latest
     defaults:
       run:

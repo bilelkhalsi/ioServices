@@ -1,14 +1,14 @@
-name: Publish config-server docker image
+name: Publish backlog-service docker image
 on:
   workflow_dispatch:
   release:
     types: [published]
 jobs:
-  publish-config-server-image:
+  publish-backlog-service-image:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: service-config-server
+        working-directory: backlog-service
     steps:
       - name: Checkout
         uses: actions/checkout@v2
