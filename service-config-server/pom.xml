@@ -34,6 +34,9 @@
                 <artifactId>jib-maven-plugin</artifactId>
                 <version>${jib.version}</version>
                 <configuration>
+                    <from>
+                        <image>openjdk:15-alpine</image>
+                    </from>
                     <to>
                         <image>${cr.url}/${project.artifactId}</image>
                         <auth>
