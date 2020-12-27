@@ -1,4 +1,4 @@
 package io.services.backlog.model;
 
-public record BacklogElement() {
+public class BacklogElement {
 }

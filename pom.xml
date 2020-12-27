@@ -98,9 +98,6 @@
                     <source>15</source>
                     <target>15</target>
                     <release>15</release>
-                    <compilerArgs>
-                        --enable-preview
-                    </compilerArgs>
                 </configuration>
             </plugin>
 
