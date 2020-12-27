@@ -4,11 +4,11 @@
     <parent>
         <groupId>io.services</groupId>
         <artifactId>services</artifactId>
-        <version>0.0.16</version>
+        <version>0.0.17-SNAPSHOT</version>
     </parent>
 
     <artifactId>backlog-service</artifactId>
-    <version>0.0.16</version>
+    <version>0.0.17-SNAPSHOT</version>
     <name>backlog-service</name>
     <description>Backlog spring boot Api</description>
 
