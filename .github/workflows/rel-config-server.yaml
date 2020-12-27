@@ -1,10 +1,10 @@
-name: Build user-service release docker image
+name: Publish config-server docker image
 on:
   workflow_dispatch:
   release:
     types: [published]
 jobs:
-  release-user-api:
+  publish-config-server-image:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -13,10 +13,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Set up JDK 11
+      - name: Set up JDK 15
         uses: actions/setup-java@v1
         with:
-          java-version: 11
+          java-version: 15
           server-id: github
 
       - name: Build Docker image

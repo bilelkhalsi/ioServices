@@ -11,10 +11,6 @@
     <name>service configuration server</name>
     <description>Spring cloud externalized configuration server</description>
 
-    <properties>
-        <jib.version>2.5.2</jib.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -38,6 +34,9 @@
                 <artifactId>jib-maven-plugin</artifactId>
                 <version>${jib.version}</version>
                 <configuration>
+                    <from>
+                        <image>openjdk:15-alpine</image>
+                    </from>
                     <to>
                         <image>${cr.url}/${project.artifactId}</image>
                         <auth>

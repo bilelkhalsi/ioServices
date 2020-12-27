@@ -1,14 +1,14 @@
-name: Build user-service release docker image
+name: Publish backlog-service docker image
 on:
   workflow_dispatch:
   release:
     types: [published]
 jobs:
-  release-user-api:
+  publish-backlog-service-image:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: user-service
+        working-directory: backlog-service
     steps:
       - name: Checkout
         uses: actions/checkout@v2

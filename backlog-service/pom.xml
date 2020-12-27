@@ -7,10 +7,10 @@
         <version>0.0.16-SNAPSHOT</version>
     </parent>
 
-    <artifactId>user-service</artifactId>
+    <artifactId>backlog-service</artifactId>
     <version>0.0.16-SNAPSHOT</version>
-    <name>user-service</name>
-    <description>User spring boot Api</description>
+    <name>backlog-service</name>
+    <description>Backlog spring boot Api</description>
 
     <dependencies>
 

@@ -12,12 +12,6 @@
     <name>service-gateway</name>
     <description>Spring cloud gateway for other services in the mesh</description>
 
-    <properties>
-        <jib.version>2.5.2</jib.version>
-        <springdoc.version>1.5.0</springdoc.version>
-    </properties>
-
-
     <dependencies>
 
         <dependency>
@@ -49,6 +43,9 @@
                 <artifactId>jib-maven-plugin</artifactId>
                 <version>${jib.version}</version>
                 <configuration>
+                    <from>
+                        <image>openjdk:15-alpine</image>
+                    </from>
                     <to>
                         <image>${cr.url}/${project.artifactId}</image>
                         <auth>
