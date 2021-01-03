@@ -40,19 +40,20 @@ public class JwtUserDetailsConverter implements Converter<Jwt, UserDetails> {
         String lastName = (String) claims.getOrDefault(WELL_KNOWN_LAST_NAME_CLAIM_NAME, Strings.EMPTY);
         Collection<GrantedAuthority> authorities = jwtGrantedAuthoritiesConverter.convert(jwt);
         String locale = (String) claims.getOrDefault(WELL_KNOWN_LOCALE_CLAIM_NAME, Locale.ENGLISH.getLanguage());
-        return ImmutableUserDetailsImpl.builder()
+        return ImmutableIoUserDetails
+                .builder()
                 .id(jwt.getSubject())
                 .email(email)
                 .username(username)
-                .password(Strings.EMPTY)
-                .enabled(true)
-                .accountNonLocked(true)
-                .accountNonExpired(true)
-                .credentialsNonExpired(true)
                 .firstName(firstName)
                 .lastName(lastName)
                 .authorities(authorities)
                 .locale(locale)
+                .password(Strings.EMPTY)
+                .isEnabled(true)
+                .isAccountNonLocked(true)
+                .isAccountNonExpired(true)
+                .isCredentialsNonExpired(true)
                 .build();
     }
 }
