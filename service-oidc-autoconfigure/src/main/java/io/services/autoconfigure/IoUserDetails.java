@@ -1,9 +1,10 @@
 package io.services.autoconfigure;
 
+import org.immutables.value.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 
-
-public interface ImmutableUserDetails extends UserDetails {
+@Value.Immutable
+public interface IoUserDetails extends UserDetails {
 
     String getId();
 
