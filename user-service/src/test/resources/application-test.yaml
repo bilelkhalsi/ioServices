@@ -30,7 +30,7 @@ spring:
 management:
   endpoint:
     metrics:
-      enabled: true
+      enabled: false
 
 springdoc:
   oauth-flow:

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet author="@bkhalsi" id="1">
+        <createTable tableName="REF_LEVEL">
+            <column name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="code" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"></column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="@bkhalsi" id="2">
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="1"></column>
+            <column name="code" value="P_1"></column>
+            <column name="description" value="Primary school first year"></column>
+        </insert>
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="2"></column>
+            <column name="code" value="P_2"></column>
+            <column name="description" value="Primary school second year"></column>
+        </insert>
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="3"></column>
+            <column name="code" value="P_3"></column>
+            <column name="description" value="Primary school third year"></column>
+        </insert>
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="4"></column>
+            <column name="code" value="P_4"></column>
+            <column name="description" value="Primary school fourth year"></column>
+        </insert>
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="5"></column>
+            <column name="code" value="P_5"></column>
+            <column name="description" value="Primary school fifth year"></column>
+        </insert>
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="6"></column>
+            <column name="code" value="P_6"></column>
+            <column name="description" value="Primary school sixth year"></column>
+        </insert>
+
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="7"></column>
+            <column name="code" value="S_1"></column>
+            <column name="description" value="Secondary school first year"></column>
+        </insert>
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="8"></column>
+            <column name="code" value="S_2"></column>
+            <column name="description" value="Secondary school second year"></column>
+        </insert>
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="9"></column>
+            <column name="code" value="S_3"></column>
+            <column name="description" value="Secondary school third year"></column>
+        </insert>
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="10"></column>
+            <column name="code" value="S_4"></column>
+            <column name="description" value="Secondary school fourth year"></column>
+        </insert>
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="11"></column>
+            <column name="code" value="S_5"></column>
+            <column name="description" value="Secondary school fifth year"></column>
+        </insert>
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="12"></column>
+            <column name="code" value="S_6"></column>
+            <column name="description" value="Secondary school sixth year"></column>
+        </insert>
+
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="13"></column>
+            <column name="code" value="BAC"></column>
+            <column name="description" value="Bachelor"></column>
+        </insert>
+
+
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="14"></column>
+            <column name="code" value="U_1"></column>
+            <column name="description" value="University first year"></column>
+        </insert>
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="15"></column>
+            <column name="code" value="U_2"></column>
+            <column name="description" value="University second year"></column>
+        </insert>
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="16"></column>
+            <column name="code" value="U_3"></column>
+            <column name="description" value="University third year"></column>
+        </insert>
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="17"></column>
+            <column name="code" value="U_4"></column>
+            <column name="description" value="University fourth year"></column>
+        </insert>
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="18"></column>
+            <column name="code" value="U_5"></column>
+            <column name="description" value="University fifth year"></column>
+        </insert>
+
+
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="19"></column>
+            <column name="code" value="E_1"></column>
+            <column name="description" value="Engineering first year"></column>
+        </insert>
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="20"></column>
+            <column name="code" value="E_2"></column>
+            <column name="description" value="Engineering second year"></column>
+        </insert>
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="21"></column>
+            <column name="code" value="E_3"></column>
+            <column name="description" value="Engineering third year"></column>
+        </insert>
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="22"></column>
+            <column name="code" value="E_4"></column>
+            <column name="description" value="Engineering fourth year"></column>
+        </insert>
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="23"></column>
+            <column name="code" value="E_5"></column>
+            <column name="description" value="Engineering fifth year"></column>
+        </insert>
+
+
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="24"></column>
+            <column name="code" value="PRO_1"></column>
+            <column name="description" value="Professional first year"></column>
+        </insert>
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="25"></column>
+            <column name="code" value="PRO_2"></column>
+            <column name="description" value="Professional second year"></column>
+        </insert>
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="26"></column>
+            <column name="code" value="PRO_3"></column>
+            <column name="description" value="Professional third year"></column>
+        </insert>
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="27"></column>
+            <column name="code" value="PRO_4"></column>
+            <column name="description" value="Professional fourth year"></column>
+        </insert>
+        <insert tableName="REF_LEVEL">
+            <column name="id" value="28"></column>
+            <column name="code" value="PRO_5"></column>
+            <column name="description" value="Professional fifth year"></column>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

@@ -6,4 +6,8 @@
 
     <include file="/liquibase/changes/001/001_create_user_table.xml"/>
     <include file="/liquibase/changes/001/001_insert_default_user.xml"/>
+    <include file="/liquibase/changes/002/002_backlog_element_levels.xml"/>
+    <include file="/liquibase/changes/002/002_backlog_element_types.xml"/>
+    <include file="/liquibase/changes/002/002_backlog_element.xml"/>
+    <include file="/liquibase/changes/002/002_backlog_module.xml"/>
 </databaseChangeLog>

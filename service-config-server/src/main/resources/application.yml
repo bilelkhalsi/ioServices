@@ -1,11 +1,12 @@
 server:
   port: 8888
-
 spring:
+  application:
+    name: configserver
   cloud:
     config:
       server:
         git:
           defaultLabel: main
           refreshRate: 60
-          uri: file:///${user.home}/workspace/github/io-services-config
+          uri: https://github.com/bilelkhalsi/io-services-config

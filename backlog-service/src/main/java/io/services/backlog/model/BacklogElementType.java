@@ -4,7 +4,10 @@ import org.immutables.value.Value;
 
 @Value.Immutable
 @BacklogValue
-public interface BacklogElement extends BaseBacklogElement {
+public interface BacklogElementType {
 
+    Long getId();
+
+    String getCode();
 
 }
