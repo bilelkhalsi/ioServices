@@ -6,12 +6,14 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.convert.WritingConverter;
 import org.springframework.data.r2dbc.mapping.OutboundRow;
 import org.springframework.r2dbc.core.Parameter;
+import org.springframework.stereotype.Component;
 
-import static io.services.backlog.repository.converter.BacklogElementConstants.*;
+import static io.services.backlog.repository.converter.Constants.BacklogElement.*;
+import static io.services.backlog.repository.converter.Constants.*;
 
+@Component
 @WritingConverter
-public enum RemoteBacklogElementWriteConverter implements Converter<RemoteBacklogElement, OutboundRow> {
-    INSTANCE;
+public class RemoteBacklogElementWriteConverter implements Converter<RemoteBacklogElement, OutboundRow> {
 
     @Override
     public OutboundRow convert(RemoteBacklogElement backlogElement) {

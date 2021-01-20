@@ -1,6 +1,6 @@
 package io.services.backlog.service;
 
-import io.services.backlog.model.ImmutableBacklogModule;
+import io.services.backlog.model.BacklogModule;
 import io.services.backlog.repository.BacklogModuleRepository;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -16,22 +16,22 @@ public class BacklogModuleServiceImpl implements BacklogModuleService {
     }
 
     @Override
-    public Flux<ImmutableBacklogModule> getByUserId(long userId) {
+    public Flux<BacklogModule> getByUserId(Long userId) {
         return Flux.empty(); // backlogModuleRepository.fin(userId);
     }
 
     @Override
-    public Mono<ImmutableBacklogModule> getById(long id) {
+    public Mono<BacklogModule> getById(Long id) {
         return backlogModuleRepository.findById(id);
     }
 
     @Override
-    public Mono<Void> deleteById(long id) {
-        return backlogModuleRepository.delete(id);
+    public Mono<Void> deleteById(Long id) {
+        return backlogModuleRepository.deleteById(id);
     }
 
     @Override
-    public Mono<ImmutableBacklogModule> save(ImmutableBacklogModule module) {
+    public Mono<BacklogModule> save(BacklogModule module) {
         return backlogModuleRepository.save(module);
     }
 }

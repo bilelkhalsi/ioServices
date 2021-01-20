@@ -5,11 +5,13 @@ import io.services.backlog.model.BacklogModule;
 import io.services.backlog.model.ImmutableBacklogModule;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.convert.ReadingConverter;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
-import static io.services.backlog.repository.converter.BacklogElementConstants.*;
+import static io.services.backlog.repository.converter.Constants.*;
 
+@Component
 @ReadingConverter
 public class BacklogModuleReadConverter implements Converter<Row, BacklogModule> {
     @Override

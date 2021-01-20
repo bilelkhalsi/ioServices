@@ -1,21 +1,8 @@
 package io.services.backlog.repository;
 
-import io.services.backlog.model.ImmutableBacklogModule;
-import reactor.core.publisher.Mono;
+import io.services.backlog.model.BacklogModule;
+import org.springframework.data.r2dbc.repository.R2dbcRepository;
 
-public interface BacklogModuleRepository {
+public interface BacklogModuleRepository extends R2dbcRepository<BacklogModule, Long> {
 
-    Mono<ImmutableBacklogModule> findById(Long id);
-
-    // Flux<ImmutableBacklogModule> modulesByUserId(Long id);
-
-    // Flux<BacklogElement> moduleElements(Long moduleId);
-
-    Mono<ImmutableBacklogModule> save(ImmutableBacklogModule module);
-
-    // Mono<ImmutableBacklogModule> addModuleElement(BacklogModuleElement moduleElement);
-
-    Mono<Void> delete(Long id);
-
-    // Mono<Void> deleteModuleElements(Long id);
 }

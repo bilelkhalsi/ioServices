@@ -6,17 +6,20 @@ import io.services.backlog.model.ImmutableRemoteBacklogElement;
 import io.services.backlog.model.RemoteBacklogElement;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.convert.ReadingConverter;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
-import static io.services.backlog.repository.converter.BacklogElementConstants.*;
+import static io.services.backlog.repository.converter.Constants.BacklogElement.*;
+import static io.services.backlog.repository.converter.Constants.*;
 
+@Component
 @ReadingConverter
 public class RemoteBacklogElementReadConverter implements Converter<Row, RemoteBacklogElement> {
     @Override
     public RemoteBacklogElement convert(Row row) {
-        return ImmutableRemoteBacklogElement
-                .builder()
+        return new ImmutableRemoteBacklogElement
+                .Builder()
                 .id(row.get(COLUMN_ID, Long.class))
                 .title(row.get(COLUMN_TITLE, String.class))
                 .description(row.get(COLUMN_DESCRIPTION, String.class))

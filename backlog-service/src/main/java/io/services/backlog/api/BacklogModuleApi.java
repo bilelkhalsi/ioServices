@@ -21,12 +21,12 @@ public class BacklogModuleApi {
     }
 
     @GetMapping
-    public Flux<ImmutableBacklogModule> currentUserModules() {
+    public Flux<BacklogModule> currentUserModules() {
         return moduleService.getByUserId(1L);
     }
 
     @GetMapping("/{id}")
-    public Mono<ImmutableBacklogModule> findById(@PathVariable long id) {
+    public Mono<BacklogModule> findById(@PathVariable long id) {
         return moduleService.getById(id);
     }
 
@@ -38,12 +38,12 @@ public class BacklogModuleApi {
 
 
     @PostMapping
-    public Mono<ImmutableBacklogModule> createModule(@RequestBody ImmutableBacklogModule module) {
+    public Mono<BacklogModule> createModule(@RequestBody BacklogModule module) {
         return moduleService.save(module);
     }
 
     @PutMapping("/{id}")
-    public Mono<ImmutableBacklogModule> updateModule(@PathVariable long id, @RequestBody ImmutableBacklogModule module) {
+    public Mono<BacklogModule> updateModule(@PathVariable long id, @RequestBody ImmutableBacklogModule module) {
         return moduleService.save(module.withId(id));
     }
 

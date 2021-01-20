@@ -2,23 +2,24 @@ package io.services.backlog.repository.converter.read;
 
 import com.google.common.collect.ImmutableMap;
 import io.r2dbc.spi.Row;
-import io.services.backlog.model.BacklogElement;
-import io.services.backlog.model.ImmutableBacklogElement;
 import io.services.backlog.model.ImmutableLocalBacklogElement;
 import io.services.backlog.model.LocalBacklogElement;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.convert.ReadingConverter;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
-import static io.services.backlog.repository.converter.BacklogElementConstants.*;
+import static io.services.backlog.repository.converter.Constants.BacklogElement.*;
+import static io.services.backlog.repository.converter.Constants.*;
 
+@Component
 @ReadingConverter
 public class LocalBacklogElementReadConverter implements Converter<Row, LocalBacklogElement> {
     @Override
     public LocalBacklogElement convert(Row row) {
-        return ImmutableLocalBacklogElement
-                .builder()
+        return new ImmutableLocalBacklogElement
+                .Builder()
                 .id(row.get(COLUMN_ID, Long.class))
                 .title(row.get(COLUMN_TITLE, String.class))
                 .description(row.get(COLUMN_DESCRIPTION, String.class))

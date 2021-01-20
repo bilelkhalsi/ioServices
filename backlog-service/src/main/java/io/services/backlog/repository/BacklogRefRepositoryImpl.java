@@ -7,18 +7,14 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Flux;
 
+import static io.services.backlog.repository.converter.Constants.BacklogElementLevel.ELEMENT_LEVEL_TABLE_NAME;
+import static io.services.backlog.repository.converter.Constants.BacklogElementType.ELEMENT_TYPE_TABLE_NAME;
+
 @Repository
 @Transactional(readOnly = true)
 public class BacklogRefRepositoryImpl implements BacklogRefRepository {
 
-
-    private static final String TABLE_REF_LEVEL = "REF_LEVEL";
-    private static final String TABLE_REF_BACKLOG_ELEMENT_TYPE = "REF_BACKLOG_ELEMENT_TYPE";
-    private static final String COLUMN_ID = "id";
-    private static final String COLUMN_CODE = "code";
-    private static final String COLUMN_DESCRIPTION = "description";
-
-    protected final R2dbcEntityTemplate r2dbcEntityTemplate;
+    private final R2dbcEntityTemplate r2dbcEntityTemplate;
 
     public BacklogRefRepositoryImpl(R2dbcEntityTemplate r2dbcEntityTemplate) {
         this.r2dbcEntityTemplate = r2dbcEntityTemplate;
@@ -27,15 +23,14 @@ public class BacklogRefRepositoryImpl implements BacklogRefRepository {
     @Override
     public Flux<ImmutableBacklogElementLevel> getBacklogLevels() {
         return this.r2dbcEntityTemplate.select(ImmutableBacklogElementLevel.class)
-                .from(TABLE_REF_LEVEL)
+                .from(ELEMENT_LEVEL_TABLE_NAME)
                 .all();
-
     }
 
     @Override
     public Flux<ImmutableBacklogElementType> getBacklogTypes() {
         return this.r2dbcEntityTemplate.select(ImmutableBacklogElementType.class)
-                .from(TABLE_REF_LEVEL)
+                .from(ELEMENT_TYPE_TABLE_NAME)
                 .all();
     }
 }

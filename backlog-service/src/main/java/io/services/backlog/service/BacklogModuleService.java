@@ -1,16 +1,16 @@
 package io.services.backlog.service;
 
-import io.services.backlog.model.ImmutableBacklogModule;
+import io.services.backlog.model.BacklogModule;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface BacklogModuleService {
 
-    Flux<ImmutableBacklogModule> getByUserId(long userId);
+    Flux<BacklogModule> getByUserId(Long userId);
 
-    Mono<ImmutableBacklogModule> getById(long id);
+    Mono<BacklogModule> getById(Long id);
 
-    Mono<Void> deleteById(long id);
+    Mono<Void> deleteById(Long id);
 
-    Mono<ImmutableBacklogModule> save(ImmutableBacklogModule module);
+    Mono<BacklogModule> save(BacklogModule module);
 }

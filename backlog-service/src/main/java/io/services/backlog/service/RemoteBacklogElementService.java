@@ -1,6 +1,7 @@
 package io.services.backlog.service;
 
 import io.services.backlog.model.RemoteBacklogElement;
+import io.services.backlog.repository.BacklogElementRepository;
 import io.services.backlog.repository.RemoteBacklogElementRepository;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
@@ -10,21 +11,22 @@ public class RemoteBacklogElementService
         extends AbstractBacklogElementService<RemoteBacklogElement>
         implements BacklogElementService<RemoteBacklogElement> {
 
-    private final RemoteBacklogElementRepository repository;
+    private final RemoteBacklogElementRepository remoteBacklogElementRepository;
 
-    public RemoteBacklogElementService(RemoteBacklogElementRepository repository) {
+    public RemoteBacklogElementService(RemoteBacklogElementRepository remoteBacklogElementRepository,
+                                       BacklogElementRepository repository) {
         super(repository);
-        this.repository = repository;
+        this.remoteBacklogElementRepository = remoteBacklogElementRepository;
     }
 
     @Override
     public Mono<RemoteBacklogElement> save(RemoteBacklogElement element) {
-        return this.repository.save(element);
+        return this.remoteBacklogElementRepository.save(element);
     }
 
     @Override
     public Mono<RemoteBacklogElement> getById(Long id) {
-        return repository.findById(id);
+        return remoteBacklogElementRepository.findById(id);
     }
 
 }

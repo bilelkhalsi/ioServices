@@ -2,11 +2,13 @@ package io.services.backlog.model;
 
 import com.google.common.collect.ImmutableMap;
 import org.immutables.value.Value;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
-import java.util.OptionalLong;
 
+import static io.services.backlog.repository.converter.Constants.BacklogElement.COLUMN_LEVEL;
+import static io.services.backlog.repository.converter.Constants.BacklogElement.COLUMN_TYPE;
 
 /*
 No @Value.Immutable
@@ -14,7 +16,11 @@ No @Value.Immutable
  */
 public interface BaseBacklogElement {
 
-    Optional<Long> getId();
+    @Id
+    @Value.Default
+    default Long getId() {
+        return null;
+    }
 
     String getTitle();
 
@@ -22,8 +28,10 @@ public interface BaseBacklogElement {
 
     Long getUserId();
 
+    @Column(COLUMN_LEVEL)
     Long getLevelId();
 
+    @Column(COLUMN_TYPE)
     Long getTypeId();
 
     @Value.Default
